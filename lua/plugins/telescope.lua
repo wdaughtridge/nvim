@@ -14,6 +14,7 @@ return {
         pickers = {
           find_files = {
             theme = "ivy",
+            prompt_prefix = " ",
           }
         }
       }
