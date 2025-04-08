@@ -20,7 +20,8 @@ return {
             end
 
             map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-            map('gD', vim.lsp.buf.declaration, '[G]oto [D]efinition')
+            map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+            map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
           end
         end,
       })
