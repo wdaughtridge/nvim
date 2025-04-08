@@ -11,8 +11,12 @@ return {
             hijack_netrw = true,
           },
         },
+        pickers = {
+          find_files = {
+            theme = "ivy",
+          }
+        }
       }
-
       telescope.load_extension "file_browser"
     end
   }
