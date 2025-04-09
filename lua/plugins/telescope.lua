@@ -13,6 +13,14 @@ return {
           },
         },
         pickers = {
+          live_grep = {
+            theme = "ivy",
+            prompt_prefix = " ",
+          },
+          buffers = {
+            theme = "ivy",
+            prompt_prefix = " ",
+          },
           find_files = {
             theme = "ivy",
             prompt_prefix = " ",
