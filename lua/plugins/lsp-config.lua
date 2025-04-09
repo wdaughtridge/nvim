@@ -3,7 +3,9 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       vim.diagnostic.config({
-        virtual_lines = true
+        virtual_text = {
+          current_line = true
+        }
       })
 
       vim.api.nvim_create_autocmd('LspAttach', {
