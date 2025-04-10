@@ -31,8 +31,10 @@ return {
       vim.cmd("set completeopt+=noselect")
 
       local lspconfig = require('lspconfig')
+      lspconfig.denols.setup {}
       lspconfig.rust_analyzer.setup {}
       lspconfig.gopls.setup {}
+      lspconfig.elp.setup {}
       lspconfig.omnisharp.setup {
         cmd = { "omnisharp" }
       }
