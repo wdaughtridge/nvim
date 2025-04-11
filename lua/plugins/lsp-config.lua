@@ -28,7 +28,7 @@ return {
         end,
       })
 
-      vim.cmd("set completeopt+=noselect")
+      vim.cmd("set completeopt+=noselect,menuone,fuzzy")
 
       local lspconfig = require('lspconfig')
       lspconfig.denols.setup {}
