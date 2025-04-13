@@ -12,10 +12,6 @@ return {
         callback = function(ev)
           local client = vim.lsp.get_client_by_id(ev.data.client_id)
           if client ~= nil then
-            if client:supports_method('textDocument/completion') then
-              vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-            end
-
             local map = function(keys, func, desc, mode)
               mode = mode or 'n'
               vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = 'LSP: ' .. desc })
@@ -27,8 +23,6 @@ return {
           end
         end,
       })
-
-      vim.cmd("set completeopt+=noselect,menuone,fuzzy")
 
       local lspconfig = require('lspconfig')
       lspconfig.denols.setup {}

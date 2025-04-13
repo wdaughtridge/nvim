@@ -13,6 +13,10 @@ return {
           },
         },
         pickers = {
+          jumplist = {
+            theme = "ivy",
+            prompt_prefix = " ",
+          },
           live_grep = {
             theme = "ivy",
             prompt_prefix = " ",
