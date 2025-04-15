@@ -15,6 +15,7 @@ end
 
 local telescope = require("telescope")
 map("<leader>d", telescope.extensions.file_browser.file_browser, "n")
+
 local telescope_builtin = require("telescope.builtin")
 map("<leader>f", telescope_builtin.find_files, "n")
 map("<leader>b", telescope_builtin.buffers, "n")
