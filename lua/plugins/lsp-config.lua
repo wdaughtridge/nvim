@@ -17,12 +17,18 @@ return {
               vim.keymap.set(mode, keys, func, { buffer = ev.buf, desc = 'LSP: ' .. desc })
             end
 
+            if client:supports_method('textDocument/completion') then
+              vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+            end
+
             map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
             map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
             map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
           end
         end,
       })
+
+      vim.cmd("set completeopt+=noselect")
 
       local lspconfig = require('lspconfig')
       lspconfig.denols.setup {}
