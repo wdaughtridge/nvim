@@ -1,7 +1,5 @@
 require("config.lazy")
 
-vim.cmd.colorscheme "kanagawa-wave"
-
 vim.g.mapleader = " "
 
 vim.o.signcolumn = "yes"
