@@ -1,22 +1,37 @@
-require("config.lazy")
-
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
-vim.o.signcolumn = "yes"
-vim.o.number = true
-vim.o.wrap = false
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-local map = function(keys, func, mode)
-  mode = mode or "n"
-  vim.keymap.set(mode, keys, func, {})
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
 end
 
-local telescope = require("telescope")
-map("<leader>d", telescope.extensions.file_browser.file_browser, "n")
+vim.opt.rtp:prepend(lazypath)
 
-local telescope_builtin = require("telescope.builtin")
-map("<leader>f", telescope_builtin.find_files, "n")
-map("<leader>b", telescope_builtin.buffers, "n")
-map("<leader>s", telescope_builtin.live_grep, "n")
-map("<leader>'", telescope_builtin.resume, "n")
-map("<leader>j", telescope_builtin.jumplist, "n")
+local lazy_config = require "configs.lazy"
+
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
+
+  { import = "plugins" },
+}, lazy_config)
+
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
+
+require "options"
+require "nvchad.autocmds"
+
+vim.schedule(function()
+  require "mappings"
+end)
